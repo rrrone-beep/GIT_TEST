@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>家电 - 小米商城</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Microsoft Yahei", sans-serif; background: #f5f5f5; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        
+        /* 顶部导航 */
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .header-title { font-size: 18px; font-weight: 200; }
+        .header-nav { display: flex; gap: 20px; }
+        .nav-item { font-size: 13px; color: #424242; cursor: pointer; border-bottom: 2px solid transparent; padding-bottom: 2px; }
+        .nav-item.active { color: #ff6700; border-bottom-color: #ff6700; }
+        
+        /* 产品网格 - 2行：第一行240px，第二行120px（半高） */
+        .product-grid {
+            display: grid;
+            grid-template-columns: 180px repeat(4, 1fr);
+            grid-template-rows: 240px 120px;
+            gap: 10px;
+        }
+        
+        /* 左侧大卡片 - 占2行 */
+        .left-card {
+            grid-row: span 2;
+            background: #fff;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .left-card:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+        .left-card img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* 产品卡片 */
+        .product-card {
+            background: #fff;
+            padding: 15px 0 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .product-card:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+        .product-img { width: 120px; height: 120px; margin-bottom: 10px; object-fit: contain; }
+        .product-name { font-size: 12px; font-weight: 400; color: #333; margin: 0 8px 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: calc(100% - 16px); }
+        .product-desc { font-size: 10px; font-weight: 300; color: #b0b0b0; margin: 0 8px 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: calc(100% - 16px); }
+        .product-price { font-size: 12px; }
+        .price-current { color: #ff6700; }
+        .price-original { color: #b0b0b0; text-decoration: line-through; margin-left: 3px; font-size: 11px; }
+        
+        /* 浏览更多 - 半格高度120px */
+        .more-card {
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            height: 120px;
+        }
+        .more-card:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+        .more-content { display: flex; align-items: center; gap: 8px; }
+        .more-text h3 { font-size: 14px; color: #333; font-weight: 400; margin-bottom: 2px; }
+        .more-text p { font-size: 10px; color: #757575; }
+        .more-icon { width: 36px; height: 36px; border: 2px solid #ff6700; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ff6700; font-size: 14px; }
+        
+        /* 右侧悬浮工具栏 */
+        .toolbar { position: fixed; right: 0; top: 50%; transform: translateY(-50%); background: #fff; box-shadow: -2px 0 8px rgba(0,0,0,0.1); z-index: 999; }
+        .toolbar-item { width: 55px; height: 60px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-bottom: 1px solid #f5f5f5; cursor: pointer; color: #757575; font-size: 9px; }
+        .toolbar-item:hover { color: #ff6700; }
+        .toolbar-icon { font-size: 15px; margin-bottom: 3px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2 class="header-title">家电</h2>
+            <div class="header-nav">
+                <span class="nav-item active">热门</span>
+                <span class="nav-item">电视影音</span>
+                <span class="nav-item">空调</span>
+            </div>
+        </div>
+        
+        <div class="product-grid">
+            <!-- 左侧大卡片占2行 -->
+            <div class="left-card">
+                <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?w=360&h=370&fit=crop" alt="小米电视">
+            </div>
+            
+            <!-- 第一行4个产品 -->
+            <div class="product-card">
+                <img class="product-img" src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=240&h=240&fit=crop" alt="电视">
+                <h3 class="product-name">小米电视S Pro Mini LED系列</h3>
+                <p class="product-desc">288Hz超高刷，4+64G大存储</p>
+                <div class="product-price"><span class="price-current">4999元起</span></div>
+            </div>
+            
+            <div class="product-card">
+                <img class="product-img" src="https://images.unsplash.com/photo-1593784991095-a205069470b6?w=240&h=240&fit=crop" alt="电视">
+                <h3 class="product-name">小米电视 S Mini LED 系列</h3>
+                <p class="product-desc">Mini LED 高分区背光，1200nits峰值...</p>
+                <div class="product-price"><span class="price-current">2999元起</span></div>
+            </div>
+            
+            <div class="product-card">
+                <img class="product-img" src="https://images.unsplash.com/photo-1461151304267-38535e780c79?w=240&h=240&fit=crop" alt="电视">
+                <h3 class="product-name">Redmi 智能电视 X 2025款</h3>
+                <p class="product-desc">240Hz竞技模式|4+64GB|全色温双色...</p>
+                <div class="product-price"><span class="price-current">3499元起</span></div>
+            </div>
+            
+            <div class="product-card">
+                <img class="product-img" src="https://images.unsplash.com/photo-1631545308772-81a0e0a3a6ae?w=240&h=240&fit=crop" alt="空调">
+                <h3 class="product-name">巨省电 小米空调 1.5匹新1级能效</h3>
+                <p class="product-desc">强劲制冷 | 高效节能 | 智能互联</p>
+                <div class="product-price"><span class="price-current">1999元</span><span class="price-original">2499元</span></div>
+            </div>
+            
+            <!-- 第二行3个产品+浏览更多 -->
+            <div class="product-card">
+                <img class="product-img" src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=240&h=240&fit=crop" alt="空调">
+                <h3 class="product-name">巨省电Pro 立式3匹 超一级能效 ...</h3>
+                <p class="product-desc">硬核飓风 智能省电</p>
+                <div class="product-price"><span class="price-current">5999元</span><span class="price-original">6499元</span></div>
+            </div>
+            
+            <div class="product-card">
+                <img class="product-img" src="https://images.unsplash.com/photo-1571175443880-49e1d58b794a?w=240&h=240&fit=crop" alt="冰箱">
+                <h3 class="product-name">米家双门冰箱 185L</h3>
+                <p class="product-desc">小体积大容量 节能低噪</p>
+                <div class="product-price"><span class="price-current">799元</span><span class="price-original">1299元</span></div>
+            </div>
+            
+            <div class="product-card">
+                <img class="product-img" src="https://images.unsplash.com/photo-1584269600519-112d071b35e6?w=240&h=240&fit=crop" alt="烤箱">
+                <h3 class="product-name">米家电烤箱</h3>
+                <p class="product-desc">全能烘焙体验</p>
+                <div class="product-price"><span class="price-current">299元</span><span class="price-original">329元</span></div>
+            </div>
+            
+            <!-- 浏览更多半格 -->
+            <div class="more-card">
+                <div class="more-content">
+                    <div class="more-text">
+                        <h3>浏览更多</h3>
+                        <p>热门</p>
+                    </div>
+                    <div class="more-icon">→</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 右侧悬浮工具栏 -->
+    <div class="toolbar">
+        <div class="toolbar-item"><div class="toolbar-icon">📱</div><span>手机APP</span></div>
+        <div class="toolbar-item"><div class="toolbar-icon">👤</div><span>个人中心</span></div>
+        <div class="toolbar-item"><div class="toolbar-icon">🔧</div><span>售后服务</span></div>
+        <div class="toolbar-item"><div class="toolbar-icon">💬</div><span>人工客服</span></div>
+        <div class="toolbar-item"><div class="toolbar-icon">🛒</div><span>购物车</span></div>
+        <div class="toolbar-item"><div class="toolbar-icon">↑</div><span>回顶部</span></div>
+    </div>
+</body>
+</html>
